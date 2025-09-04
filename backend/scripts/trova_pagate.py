@@ -19,7 +19,7 @@ def check_pagata(xml_file):
 
     return len(found) > 0, found
 
-def ask_gemma(message, model="gemma:3-4b"):
+def ask_gemma(message, model="gemma3:4b"):
     """Invia un prompt a Gemma tramite Ollama (funziona su Windows e Linux)"""
     prompt = f"""
 Regola: se nel documento compare la dicitura MP09 o MP19,
