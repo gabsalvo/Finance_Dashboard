@@ -19,22 +19,31 @@ def check_pagata(xml_file):
 
     return len(found) > 0, found
 
-
 def ask_gemma(message, model="gemma:3-4b"):
-    """Invia un prompt al modello Gemma tramite Ollama"""
+    """Invia un prompt a Gemma tramite Ollama (funziona su Windows e Linux)"""
     prompt = f"""
-Regola: se nel documento compare la dicitura MP09 o MP19, significa che la fattura è già pagata.
+Regola: se nel documento compare la dicitura MP09 o MP19,
+significa che la fattura è già pagata.
 Analizza il contenuto e rispondi di conseguenza.
 
 Contenuto:
 {message}
 """
-    result = subprocess.run(
+
+    process = subprocess.Popen(
         ["ollama", "run", model],
-        input=prompt.encode("utf-8"),
-        capture_output=True
+        stdin=subprocess.PIPE,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True
     )
-    return result.stdout.decode("utf-8").strip()
+
+    stdout, stderr = process.communicate(input=prompt)
+
+    if stderr:
+        print("⚠️ Errore Ollama:", stderr.strip())
+
+    return stdout.strip()
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
@@ -43,18 +52,17 @@ if __name__ == "__main__":
 
     xml_path = sys.argv[1]
 
-    # verifica che il file esista
     if not os.path.exists(xml_path):
         print(f"Errore: file {xml_path} non trovato.")
         sys.exit(1)
 
-    has_mp09, details = check_pagata(xml_path)
+    has_mp, details = check_pagata(xml_path)
 
-    if has_mp09:
-        msg = f"Nel file {xml_path} è stata trovata la dicitura MP09 o MP19. Dettagli: {details}"
+    if has_mp:
+        msg = f"Nel file {xml_path} è stata trovata la dicitura MP09/MP19. Dettagli: {details}"
     else:
         msg = f"Nel file {xml_path} non è stata trovata alcuna dicitura MP09 o MP19."
 
     response = ask_gemma(msg)
-    print("Risposta del modello:\n")
+    print("\n📢 Risposta del modello:\n")
     print(response)
