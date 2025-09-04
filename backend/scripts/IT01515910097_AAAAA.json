@@ -1,0 +1,82 @@
+{
+  "FatturaElettronica": {
+    "@versione": "FPR12",
+    "FatturaElettronicaHeader": {
+      "DatiTrasmissione": {
+        "IdTrasmittente": {
+          "IdPaese": "IT",
+          "IdCodice": "PRZPCR61P62B369P"
+        },
+        "ProgressivoInvio": "AAAAA",
+        "FormatoTrasmissione": "FPR12",
+        "CodiceDestinatario": "SU9YNJA"
+      },
+      "CedentePrestatore": {
+        "DatiAnagrafici": {
+          "IdFiscaleIVA": {
+            "IdPaese": "IT",
+            "IdCodice": "01515910097"
+          },
+          "CodiceFiscale": "SHRHSN59P01Z224V",
+          "Anagrafica": {
+            "Nome": "HASSAN",
+            "Cognome": "SHIRMOHAMMADI"
+          },
+          "RegimeFiscale": "RF19"
+        },
+        "Sede": {
+          "Indirizzo": "VIA CORDANIERI N 1 A INT 6",
+          "CAP": "16157",
+          "Comune": "GENOVA",
+          "Provincia": "GE",
+          "Nazione": "IT"
+        }
+      },
+      "CessionarioCommittente": {
+        "DatiAnagrafici": {
+          "IdFiscaleIVA": {
+            "IdPaese": "IT",
+            "IdCodice": "02044470991"
+          },
+          "CodiceFiscale": "02044470991",
+          "Anagrafica": {
+            "Denominazione": "FORTUNY SRL"
+          }
+        },
+        "Sede": {
+          "Indirizzo": "VIA RIMASSA 110-112-114 E 116RR",
+          "CAP": "16129",
+          "Comune": "GENOVA",
+          "Provincia": "GE",
+          "Nazione": "IT"
+        }
+      }
+    },
+    "FatturaElettronicaBody": {
+      "DatiGenerali": {
+        "DatiGeneraliDocumento": {
+          "TipoDocumento": "TD01",
+          "Divisa": "EUR",
+          "Data": "2025-07-26",
+          "Numero": "1"
+        }
+      },
+      "DatiBeniServizi": {
+        "DettaglioLinee": {
+          "NumeroLinea": "1",
+          "Descrizione": "N. 4 TAPPETI VECCHIA MANIFATTURA",
+          "PrezzoUnitario": "600.00",
+          "PrezzoTotale": "600.00",
+          "AliquotaIVA": "0.00",
+          "Natura": "N2.2"
+        },
+        "DatiRiepilogo": {
+          "AliquotaIVA": "0.00",
+          "Natura": "N2.2",
+          "ImponibileImporto": "600.00",
+          "Imposta": "0.00"
+        }
+      }
+    }
+  }
+}
