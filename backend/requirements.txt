@@ -4,3 +4,4 @@ sqlmodel
 apscheduler
 websockets
 wsproto
+python-multipart
